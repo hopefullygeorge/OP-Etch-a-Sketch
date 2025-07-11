@@ -4,9 +4,9 @@
 
 .container {
   border: solid 2px red;
-  max-width: 500px;
-  max-height: 200px;
+  display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #gridContainer {
@@ -16,9 +16,10 @@
 }
 
 #square {
+  box-sizing: border-box;
   height: 50px;
   width: 50px;
   background-color: black;
-  padding: 5px;
-  margin: 5px;
+  padding: 0px;
+  margin: 0px;
 }
