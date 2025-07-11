@@ -1,0 +1,24 @@
+.buttonHome {
+  display: flex;
+}
+
+.container {
+  border: solid 2px red;
+  max-width: 500px;
+  max-height: 200px;
+  justify-content: space-evenly;
+}
+
+#gridContainer {
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#square {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+}
