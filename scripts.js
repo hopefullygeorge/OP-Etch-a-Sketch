@@ -1,8 +1,17 @@
 const containerMain = document.querySelector(".container");
-const btnNewGrid = document.querySelector("#btnGridSize");
 const btnPixel = document.querySelector("#btnPixels");
+const btnOpacity = document.querySelector("#btnToggleSquareOpactiy");
 
-let gridSize = 700;
+const selectPixels = document.querySelector("#pixelNumbers");
+
+const screenHeight = 500;
+const screenWidth = 900;
+
+let squareOpactiyValue = 1;
+let squareOpactityDecrease = false;
+
+containerMain.style.height = intToPixel(screenHeight);
+containerMain.style.width = intToPixel(screenWidth);
 
 function getRandomColor() {
   var letters = "0123456789ABCDEF";
@@ -19,18 +28,6 @@ function createSquare() {
   return gridSquare;
 }
 
-function createContainer() {
-  gridContainer = document.createElement("div");
-  gridContainer.id = "gridContainer";
-  return gridContainer;
-}
-
-function createNewGrid() {
-  let size = parseInt(prompt("How many pixels would you like?"));
-  clearGrid();
-  createGrid(size);
-}
-
 function clearGrid() {
   allSquares = document.querySelectorAll("#square");
   for (square of allSquares) {
@@ -38,33 +35,43 @@ function clearGrid() {
   }
 }
 
-function setGridSize() {
-  let size = parseInt(prompt("What size grid would you like?"));
-  clearGrid();
-  gridSize = size;
-  containerMain.style.width = `${gridSize}px`;
-  containerMain.style.height = `${gridSize}px`;
-  createGrid(16);
+function intToPixel(num) {
+  return `${num}px`;
 }
 
-function createGrid(numOfSquares) {
-  for (let i = 0; i < numOfSquares ** 2; i++) {
-    const square = createSquare();
-    const squareSize = gridSize / numOfSquares;
-    square.style.width = `${squareSize}px`;
-    square.style.height = `${squareSize}px`;
+// Calculate the number of pixels to fill the entire container with
+function createGrid(pixelSize) {
+  const amountOfPixels = (screenHeight / pixelSize) * (screenWidth / pixelSize);
+  for (let pixel = 0; pixel < amountOfPixels; pixel++) {
+    let square = createSquare();
+    square.style.width = intToPixel(pixelSize);
+    square.style.height = intToPixel(pixelSize);
+    containerMain.appendChild(square);
     square.addEventListener("mouseover", () => {
       square.style.backgroundColor = getRandomColor();
     });
-
-    containerMain.appendChild(square);
+    square.addEventListener("mouseover", () => {
+      if (squareOpactityDecrease == true) {
+        squareOpactiyValue -= 0.1;
+        square.style.opacity = squareOpactiyValue;
+        if (squareOpactiyValue <= 0) {
+          squareOpactiyValue = 1;
+        }
+      }
+    });
   }
 }
 
-containerMain.style.width = `${gridSize}px`;
-containerMain.style.height = `${gridSize}px`;
+btnPixel.addEventListener("click", () => {
+  const pixelSize = parseInt(selectPixels.value);
+  clearGrid();
+  createGrid(pixelSize);
+});
 
-createGrid(32);
-
-btnPixel.addEventListener("click", createNewGrid);
-btnNewGrid.addEventListener("click", setGridSize);
+btnOpacity.addEventListener("click", () => {
+  if (squareOpactityDecrease == false) {
+    squareOpactityDecrease = true;
+  } else {
+    squareOpactityDecrease = false;
+  }
+});

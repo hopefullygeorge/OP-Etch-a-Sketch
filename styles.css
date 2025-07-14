@@ -1,18 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#etchFrame {
+  box-sizing: border-box;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px 60px 20px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: 40px solid blue;
+}
+
 .buttonHome {
   display: flex;
 }
 
 .container {
   border: solid 2px red;
+  height: 500px;
+  width: 800px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-}
-
-#gridContainer {
-  border: solid 2px black;
-  display: flex;
-  justify-content: space-evenly;
 }
 
 #square {
@@ -20,6 +36,4 @@
   height: 50px;
   width: 50px;
   background-color: black;
-  padding: 0px;
-  margin: 0px;
 }

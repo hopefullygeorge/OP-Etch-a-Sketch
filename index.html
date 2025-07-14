@@ -8,10 +8,19 @@
     <script src="/scripts.js" defer></script>
   </head>
   <body>
-    <div class="buttonHome">
-      <button id="btnGridSize">Resize the grid.</button>
-      <button id="btnPixels">Change the amount of pixels.</button>
+    <div id="etchFrame">
+      <!-- The options are the common factors for the screen size of 500x900 -->
+      <select name="pixelNumbers" id="pixelNumbers">
+        <option value="5">4</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+      <div class="buttonHome">
+        <button id="btnPixels">Change the amount of pixels.</button>
+        <button id="btnToggleSquareOpactiy">Square Opactiy</button>
+      </div>
+      <div class="container"></div>
     </div>
-    <div class="container"></div>
   </body>
 </html>
